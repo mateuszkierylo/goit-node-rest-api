@@ -1,5 +1,5 @@
-import contactsService from "../services/contactsServices.js";
-import { addContactSchema, updateContactSchema } from "../schemas/contactsSchemas.js";
+import * as contactsService from "../services/contactsServices.js";
+import { createContactSchema, updateContactSchema } from "../schemas/contactsSchemas.js";
 
 // GET /api/contacts
 export const getAllContacts = async (req, res) => {
@@ -46,7 +46,7 @@ export const deleteContact = async (req, res) => {
 // POST /api/contacts
 export const createContact = async (req, res) => {
   try {
-    const { error } = addContactSchema.validate(req.body);
+    const { error } = createContactSchema.validate(req.body);
     if (error) {
       return res.status(400).json({ message: error.message });
     }
